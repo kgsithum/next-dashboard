@@ -5,7 +5,7 @@ export interface LineChartProps {
 }
 
 const LineChart: React.FC<LineChartProps> = ({ name }) => {
-  return <>LINE CHART</>;
+  return <>{name}</>;
 };
 
 export default LineChart;
