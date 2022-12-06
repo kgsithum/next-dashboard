@@ -30,6 +30,7 @@ The task is to create the dashboard screen given via the document and implement 
 Developed using: `Node Hydrogen (lts/hydrogen)` and `yarn`.
 
 `.nvmrc` - Which version of Node is used
+
 `.npmrc` - Which package manager is used
 
 Additional setting in `package.json` to restrict to `yarn`
