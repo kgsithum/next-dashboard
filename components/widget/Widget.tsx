@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { formatSeriesData } from '../../helpers/SeriesDataHelper';
 import * as DataApi from '../../pages/api/DataApi';
-import { ChartType } from '../../pages/api/types/ChartType';
 import { QueryType } from '../../pages/api/types/QueryType';
 import { SeriesCodeType } from '../../pages/api/types/SeriesCode';
 import { SeriesDataType } from '../../pages/api/types/SeriesDataType';
-import BarChart from './BarChart';
-import LineChart from './LineChart';
+import { WidgetType } from '../../pages/api/types/WidgetType';
+import PopulationGrowth from './PopulationGrowth';
+import SentimentIndex from './SentimentIndex';
 
-export interface ChartProps {
+export interface WidgetProps {
   code: SeriesCodeType;
-  type: ChartType;
+  type: WidgetType;
   fromDate: string;
   toDate: string;
 }
 
-const Chart: React.FC<ChartProps> = ({ code, type, fromDate, toDate }) => {
-  const [chartData, setChartData] = useState<SeriesDataType>();
+const Widget: React.FC<WidgetProps> = ({ code, type, fromDate, toDate }) => {
+  const [widgetData, setWidgetData] = useState<SeriesDataType>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const query: QueryType = { from: fromDate, to: toDate, format: 'json' };
 
@@ -24,7 +24,7 @@ const Chart: React.FC<ChartProps> = ({ code, type, fromDate, toDate }) => {
     (async (): Promise<void> => {
       const data = await DataApi.getSeriesData(code, query);
       const formattedData = formatSeriesData(data);
-      setChartData(formattedData);
+      setWidgetData(formattedData);
       setIsLoading(false);
     })();
   }, [fromDate, toDate]);
@@ -33,15 +33,15 @@ const Chart: React.FC<ChartProps> = ({ code, type, fromDate, toDate }) => {
     return <></>;
   }
 
-  if (type === ChartType.BAR) {
-    return <BarChart chartData={chartData} />;
+  if (type === WidgetType.SENTIMENT_INDEX) {
+    return <SentimentIndex widgetData={widgetData} />;
   }
 
-  if (type === ChartType.LINE) {
-    return <LineChart chartData={chartData} />;
+  if (type === WidgetType.POPULATION_GROWTH) {
+    return <PopulationGrowth widgetData={widgetData} />;
   }
 
   return <></>;
 };
 
-export default Chart;
+export default Widget;

@@ -8,15 +8,15 @@ export interface BarChartProps {
 
 const BarChart: React.FC<BarChartProps> = ({ chartData }) => {
   if (!chartData) {
-    return;
+    return <></>;
   }
 
   return (
     <div>
       <div className="flex-1 text-center">{chartData.title}</div>
       <VictoryChart
-        height={600}
-        width={800}
+        height={500}
+        width={500}
         theme={VictoryTheme.material}
         domainPadding={20}
       >
