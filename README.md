@@ -25,6 +25,10 @@ The task is to create the dashboard screen given via the document and implement 
 - [react-input-range](https://yarnpkg.com/package/react-input-range)
 - [React Date Picker](https://www.npmjs.com/package/react-datepicker)
 
+## Demo (GIF)
+
+![example usage](public/demo/economic-dashboard-demo.gif)
+
 ## Installation
 
 Developed using: `Node Hydrogen (lts/hydrogen)` and `yarn`.
