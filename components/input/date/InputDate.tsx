@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export interface IInputDate {
+export interface InputDateProps {
   name: string;
   defaultDate: Date;
   excludeDay?: boolean;
   onChange: (date: Date) => void;
 }
 
-const InputDate: React.FC<IInputDate> = ({
+const InputDate: React.FC<InputDateProps> = ({
   name,
   defaultDate,
   excludeDay,

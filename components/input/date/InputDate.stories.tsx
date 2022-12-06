@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import InputDate, { IInputDate } from './InputDate';
+import InputDate, { InputDateProps } from './InputDate';
 import { mockInputDateProps } from './InputDate.mocks';
 
 export default {
@@ -16,4 +16,4 @@ export const Base = Template.bind({});
 
 Base.args = {
   ...mockInputDateProps.base,
-} as IInputDate;
+} as InputDateProps;

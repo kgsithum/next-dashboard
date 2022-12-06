@@ -1,17 +1,23 @@
+import { Range } from 'react-input-range';
 import InputDate from './input/date/InputDate';
+import InputScale from './input/scale/InputScale';
 
-export interface IHeader {
+export interface HeaderProps {
   fromDate: string;
   toDate: string;
+  scaleValue: number | Range;
   selectFromDate: (date: Date) => void;
   selectToDate: (date: Date) => void;
+  selectScale: (value: number | Range) => void;
 }
 
-const Header: React.FC<IHeader> = ({
+const Header: React.FC<HeaderProps> = ({
   fromDate,
   toDate,
+  scaleValue,
   selectFromDate,
   selectToDate,
+  selectScale,
 }) => {
   return (
     <header className="p-10">
@@ -39,10 +45,15 @@ const Header: React.FC<IHeader> = ({
             onChange={selectToDate}
           />
         </div>
-        <div className="flex-1 inline-flex gap-5">
+        <div className="flex-1 w-40">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Scale
           </label>
+          <InputScale
+            name="scale"
+            defaultValue={scaleValue}
+            onChange={selectScale}
+          />
         </div>
       </div>
     </header>

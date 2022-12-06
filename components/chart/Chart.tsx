@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Range } from 'react-input-range';
 import { formatSeriesData } from '../../helpers/SeriesDataHelper';
 import * as DataApi from '../../pages/api/DataApi';
 import { ChartType } from '../../pages/api/types/ChartType';
@@ -13,9 +14,16 @@ export interface ChartProps {
   type: ChartType;
   fromDate: string;
   toDate: string;
+  scaleValue?: number | Range;
 }
 
-const Chart: React.FC<ChartProps> = ({ code, type, fromDate, toDate }) => {
+const Chart: React.FC<ChartProps> = ({
+  code,
+  type,
+  fromDate,
+  toDate,
+  scaleValue,
+}) => {
   const [chartData, setChartData] = useState<SeriesDataType>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const query: QueryType = { from: fromDate, to: toDate, format: 'json' };
@@ -27,7 +35,7 @@ const Chart: React.FC<ChartProps> = ({ code, type, fromDate, toDate }) => {
       setChartData(formattedData);
       setIsLoading(false);
     })();
-  }, [fromDate, toDate]);
+  }, [fromDate, toDate, scaleValue]);
 
   if (isLoading) {
     return <></>;
@@ -38,7 +46,7 @@ const Chart: React.FC<ChartProps> = ({ code, type, fromDate, toDate }) => {
   }
 
   if (type === ChartType.LINE) {
-    return <LineChart chartData={chartData} />;
+    return <LineChart chartData={chartData} scaleValue={scaleValue} />;
   }
 
   return <></>;

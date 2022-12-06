@@ -1,12 +1,12 @@
 import formatDate from '../../../helpers/DateHelper';
-import { IInputDate } from './InputDate';
+import { InputDateProps } from './InputDate';
 
 const handleSelect = (date: Date): void => {
   const dateValue = formatDate(date);
   console.log(dateValue);
 };
 
-const base: IInputDate = {
+const base: InputDateProps = {
   name: 'from-date',
   defaultDate: new Date(),
   onChange: handleSelect,

@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+import { Range } from 'react-input-range';
 import { DataItem, SeriesDataType } from '../pages/api/types/SeriesDataType';
 import { SeriesRawDataType } from '../pages/api/types/SeriesRawDataType';
 
@@ -19,7 +20,7 @@ const formatSeriesData = (rawData: SeriesRawDataType): SeriesDataType => {
 
 const generateScaledData = (
   data: Array<DataItem>,
-  scale: number
+  scale: number | Range
 ): Array<DataItem> => {
   const updatedDataItems: Array<DataItem> = [];
   data.forEach((item) => {
@@ -30,9 +31,9 @@ const generateScaledData = (
   return updatedDataItems;
 };
 
-const getMultipliedValue = (value: number, scale: number): number => {
+const getMultipliedValue = (value: number, scale: number | Range): number => {
   const valueBigNumber = new BigNumber(value);
-  const scaleBigNumber = new BigNumber(scale);
+  const scaleBigNumber = new BigNumber(scale.toString());
 
   return valueBigNumber.multipliedBy(scaleBigNumber).toNumber();
 };

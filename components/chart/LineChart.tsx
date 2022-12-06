@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { Range } from 'react-input-range';
 import { VictoryAxis, VictoryChart, VictoryLine, VictoryTheme } from 'victory';
 import { generateScaledData } from '../../helpers/SeriesDataHelper';
 import { DataItem, SeriesDataType } from '../../pages/api/types/SeriesDataType';
 
 export interface LineChartProps {
   chartData?: SeriesDataType;
+  scaleValue?: number | Range;
 }
 
-const LineChart: React.FC<LineChartProps> = ({ chartData }) => {
+const LineChart: React.FC<LineChartProps> = ({ chartData, scaleValue }) => {
   const [scaledData, setScaledData] = useState<Array<DataItem>>();
   useEffect(() => {
-    if (chartData) {
-      const generatedScaledData = generateScaledData(chartData.data, 2);
+    if (chartData && scaleValue) {
+      const generatedScaledData = generateScaledData(
+        chartData.data,
+        scaleValue
+      );
       setScaledData(generatedScaledData);
     }
   }, [chartData]);
