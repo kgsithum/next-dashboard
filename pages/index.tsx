@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Range } from 'react-input-range';
 import Chart from '../components/chart/Chart';
 import Header from '../components/Header';
@@ -12,10 +12,6 @@ const Home: React.FC = () => {
   const [fromDate, setFromDate] = useState('2015-01-01');
   const [toDate, setToDate] = useState('2021-01-01');
   const [scaleValue, setScaleValue] = useState<number | Range>(1);
-
-  useEffect(() => {
-    //console.log(scaleValue);
-  }, [scaleValue]);
 
   return (
     <div className="min-h-screen flex flex-col items-center">
@@ -31,7 +27,7 @@ const Home: React.FC = () => {
         <div>
           <Chart
             type={ChartType.LINE}
-            code={SeriesCodeType.CONFUS}
+            code={SeriesCodeType.CPIUS}
             fromDate={fromDate}
             toDate={toDate}
             scaleValue={scaleValue}
