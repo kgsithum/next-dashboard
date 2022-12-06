@@ -1,34 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Economic Dashboard - Programming Task - PWC
 
-## Getting Started
+This project was bootstrapped with [Next.js](https://nextjs.org/docs/getting-started).
 
-First, run the development server:
+## The task
 
-```bash
-npm run dev
-# or
+The task is to create the dashboard screen given via the document and implement all the required logics and interfaces.
+
+## Tech
+
+- ReactJS
+- TypeScript
+- [Next.js](https://nextjs.org/docs/getting-started)
+- ES6
+- [Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Husky](https://typicode.github.io/husky/#/)
+- [Storybook](https://storybook.js.org/docs/react/get-started/introduction)
+
+## Other
+
+- [Victory Charts](https://formidable.com/open-source/victory/docs/)
+- [bignumber.js](https://mikemcl.github.io/bignumber.js/)
+- [react-input-range](https://yarnpkg.com/package/react-input-range)
+- [React Date Picker](https://www.npmjs.com/package/react-datepicker)
+
+## Installation
+
+Developed using: `Node Hydrogen (lts/hydrogen)` and `yarn`.
+
+`.nvmrc` - Which version of Node is used
+`.npmrc` - Which package manager is used
+
+Additional setting in `package.json` to restrict to `yarn`
+
+```
+"engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "please-use-yarn"
+  }
+```
+
+To install the project,
+
+Clone the repository and run,
+
+```sh
+cd
+next-dashboard
+yarn install
+```
+
+Run
+
+```sh
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Test Eslint
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+yarn lint
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Storybook
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```sh
+yarn storybook
+```
 
-## Learn More
+## Instructions
 
-To learn more about Next.js, take a look at the following resources:
+- Open the url in the browser after runing the `yarn dev`.
+- `http://localhost:3000`
+- The dashboard will be displayed in the browser with five main display sections.
+- There is a demo file ( `economic-dashboard-demo.gif` ) available in the `public/demo` directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Assumptions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- No axis labels/values displayed on the charts.
+- The API returns standard data format.
 
-## Deploy on Vercel
+## Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Install `Jest` and write unit tests to cover all the logics/components.
+- Implement storybook for all the components.
