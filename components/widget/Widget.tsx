@@ -21,13 +21,15 @@ const Widget: React.FC<WidgetProps> = ({ code, type, fromDate, toDate }) => {
   const query: QueryType = { from: fromDate, to: toDate, format: 'json' };
 
   useEffect(() => {
-    (async (): Promise<void> => {
-      const data = await DataApi.getSeriesData(code, query);
-      const formattedData = formatSeriesData(data);
-      setWidgetData(formattedData);
-      setIsLoading(false);
-    })();
+    fetchWidgetData();
   }, [fromDate, toDate]);
+
+  const fetchWidgetData = async (): Promise<void> => {
+    const data = await DataApi.getSeriesData(code, query);
+    const formattedData = formatSeriesData(data);
+    setWidgetData(formattedData);
+    setIsLoading(false);
+  };
 
   if (isLoading) {
     return <></>;

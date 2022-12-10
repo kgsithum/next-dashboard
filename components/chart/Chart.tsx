@@ -29,13 +29,15 @@ const Chart: React.FC<ChartProps> = ({
   const query: QueryType = { from: fromDate, to: toDate, format: 'json' };
 
   useEffect(() => {
-    (async (): Promise<void> => {
-      const data = await DataApi.getSeriesData(code, query);
-      const formattedData = formatSeriesData(data);
-      setChartData(formattedData);
-      setIsLoading(false);
-    })();
+    fetchChartData();
   }, [fromDate, toDate, scaleValue]);
+
+  const fetchChartData = async (): Promise<void> => {
+    const data = await DataApi.getSeriesData(code, query);
+    const formattedData = formatSeriesData(data);
+    setChartData(formattedData);
+    setIsLoading(false);
+  };
 
   if (isLoading) {
     return <></>;
